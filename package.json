@@ -1,0 +1,31 @@
+{
+  "name": "b24-cloud-to-box-migration",
+  "version": "0.1.0",
+  "private": true,
+  "main": "index.js",
+  "engines": { "node": ">=20 <21" },
+  "scripts": {
+    "build": "tsc -p .",
+  "prestart": "node scripts/check-node.js",
+  "start": "func start",
+  "lint": "eslint . --ext .ts",
+  "dev": "func start --verbose",
+  "azurite": "azurite --location ./.azurite --silent",
+  "dev:all": "powershell -NoLogo -Command \"Start-Job { npm run azurite }; func start --verbose\""
+  },
+  "dependencies": {
+    "@azure/data-tables": "^13.3.0",
+    "@azure/storage-queue": "^12.15.0",
+    "@azure/storage-blob": "^12.18.0",
+    "axios": "^1.7.7"
+  },
+  "devDependencies": {
+    "@azure/functions": "^4.5.0",
+    "typescript": "^5.5.4",
+    "eslint": "^8.57.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@types/node": "^20.14.10",
+    "azurite": "^3.30.0"
+  }
+}
